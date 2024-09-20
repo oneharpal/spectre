@@ -38,9 +38,9 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
 
-  gem "rspec-rails"
-  gem "factory_bot_rails"
-  gem "capybara"
+  gem "rspec-rails", ">=7.0.1"
+  gem "factory_bot_rails", ">=6.4.3"
+  gem "capybara", ">=3.40.0"
 
 
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
@@ -56,6 +56,6 @@ group :development do
 end
 
 group :test do
-  gem "database_cleaner"
+  gem "database_cleaner", ">=2.0.2"
 end
 

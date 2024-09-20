@@ -310,16 +310,16 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   brakeman
-  capybara
-  database_cleaner
+  capybara (>= 3.40.0)
+  database_cleaner (>= 2.0.2)
   debug
-  factory_bot_rails
+  factory_bot_rails (>= 6.4.3)
   importmap-rails
   jbuilder
   pg (~> 1.1)
   puma (>= 5.0)
   rails (~> 7.2.1)
-  rspec-rails
+  rspec-rails (>= 7.0.1)
   rubocop-rails-omakase
   sprockets-rails
   stimulus-rails
