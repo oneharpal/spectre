@@ -80,6 +80,4 @@ test:
 #
 production:
   <<: *default
-  database: spectre_production
-  username: spectre
-  password: <%= ENV["SPECTRE_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
