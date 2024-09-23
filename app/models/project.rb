@@ -12,8 +12,12 @@ class Project < ApplicationRecord
   end
 
   def set_default_value
-    self.title = "Project #{Project.last.id+1}" if title.blank?
-    self.description = "Project description #{Project.last.id+1}" if description.blank?
+    self.title = "Project #{calculate_sequence_number}" if title.blank?
+    self.description = "Project description #{calculate_sequence_number}" if description.blank?
     self.immortal = true
+  end
+
+  def calculate_sequence_number
+    @sequence_number||=Project.last&.id.to_i+1
   end
 end

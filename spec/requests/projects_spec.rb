@@ -17,12 +17,15 @@ RSpec.describe "/projects", type: :request do
   # Project. As you add validations to Project, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    { title: "Valid Project Title", description: "A valid description" }
   }
 
   let(:invalid_attributes) {
     skip("Add a hash of attributes invalid for your model")
   }
+
+  let!(:user) { create(:user) }
+  before { login_as user, scope: :user }
 
   describe "GET /index" do
     it "renders a successful response" do
@@ -114,17 +117,36 @@ RSpec.describe "/projects", type: :request do
   end
 
   describe "DELETE /destroy" do
-    it "destroys the requested project" do
-      project = Project.create! valid_attributes
-      expect {
+    context "When project is not immortal" do
+      it "destroys the requested project" do
+        project = Project.create! valid_attributes
+        project.update(immortal: false)
+        expect {
+          delete project_url(project)
+        }.to change(Project, :count).by(-1)
+      end
+
+      it "redirects to the projects list" do
+        project = Project.create! valid_attributes
+        project.update(immortal: false)
         delete project_url(project)
-      }.to change(Project, :count).by(-1)
+        expect(response).to redirect_to(projects_url)
+      end
     end
 
-    it "redirects to the projects list" do
-      project = Project.create! valid_attributes
-      delete project_url(project)
-      expect(response).to redirect_to(projects_url)
+    context "When project is immortal" do
+      it "not destroys the requested project" do
+        project = Project.create! valid_attributes
+        expect {
+          delete project_url(project)
+        }.to change(Project, :count).by(0)
+      end
+
+      it "redirects to the project show" do
+        project = Project.create! valid_attributes
+        delete project_url(project)
+        expect(response).to redirect_to(project_url(project))
+      end
     end
   end
 end
