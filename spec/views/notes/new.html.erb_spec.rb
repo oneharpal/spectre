@@ -9,7 +9,6 @@ RSpec.describe "notes/new", type: :view do
     render
 
     assert_select "form[action=?][method=?]", notes_path, "post" do
-
       assert_select "input[name=?]", "note[title]"
 
       assert_select "textarea[name=?]", "note[body]"

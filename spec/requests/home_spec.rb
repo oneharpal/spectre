@@ -8,5 +8,4 @@ RSpec.describe "Homes", type: :request do
       expect(response.body).to include("Welcome")
     end
   end
-
 end

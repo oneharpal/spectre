@@ -41,7 +41,7 @@ group :development, :test do
   gem "rspec-rails", ">=7.0.1"
   gem "factory_bot_rails", ">=6.4.3"
   gem "capybara", ">=3.40.0"
-  gem 'selenium-webdriver'
+  gem "selenium-webdriver"
 
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false
@@ -58,4 +58,3 @@ end
 group :test do
   gem "database_cleaner", ">=2.0.2"
 end
-
