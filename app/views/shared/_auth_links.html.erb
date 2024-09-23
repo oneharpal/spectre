@@ -2,7 +2,7 @@
   <p>
     Logged in as <%= current_user.email %> |
     <%= link_to 'Edit Profile', edit_user_registration_path %> |
-    <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+    <%= link_to 'Sign out', destroy_user_session_path, data: { turbo_method: :delete }  %>
   </p>
 <% else %>
   <p>
