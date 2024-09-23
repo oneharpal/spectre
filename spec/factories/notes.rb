@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :note do
-    title { "MyString" }
-    body { "MyText" }
-    project { nil }
+    title { "note one title" }
+    body { "note one body" }
+    association :project
   end
 end

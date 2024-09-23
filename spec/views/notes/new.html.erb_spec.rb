@@ -2,11 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "notes/new", type: :view do
   before(:each) do
-    assign(:note, Note.new(
-      title: "MyString",
-      body: "MyText",
-      project: nil
-    ))
+    assign(:note, build(:note))
   end
 
   it "renders new note form" do
@@ -18,7 +14,7 @@ RSpec.describe "notes/new", type: :view do
 
       assert_select "textarea[name=?]", "note[body]"
 
-      assert_select "input[name=?]", "note[project_id]"
+      assert_select "select[name=?]", "note[project_id]"
     end
   end
 end
