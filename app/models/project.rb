@@ -14,10 +14,10 @@ class Project < ApplicationRecord
   def set_default_value
     self.title = "Project #{calculate_sequence_number}" if title.blank?
     self.description = "Project description #{calculate_sequence_number}" if description.blank?
-    self.immortal = true
+    self.immortal = true if immortal.nil?
   end
 
   def calculate_sequence_number
-    @sequence_number||=Project.last&.id.to_i+1
+    Project.maximum(:id).to_i + 1
   end
 end
