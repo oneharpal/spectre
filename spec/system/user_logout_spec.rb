@@ -2,7 +2,7 @@
 require 'rails_helper'
 
 RSpec.describe 'User Logout', type: :system do
-  let!(:user) { User.create(email: 'testuser@example.com', password: 'password123') }
+  let!(:user) { create(:user) }
 
   before do
     visit new_user_session_path
