@@ -2,7 +2,7 @@
 require 'rails_helper'
 
 RSpec.describe 'User Login', type: :system do
-  let!(:user) { User.create!(email: 'testuser@example.com', password: 'password123') }
+  let!(:user) { create(:user) }
 
   it 'allows a logged-in user to access the dashboard' do
     visit new_user_session_path
@@ -13,5 +13,4 @@ RSpec.describe 'User Login', type: :system do
     expect(page).to have_content('Signed in successfully')
     expect(current_path).to eq(root_path)
   end
-
 end

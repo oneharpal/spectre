@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :project do
-    title { "project one title" }
-    description { "project1 one description" }
+    title { Faker::Lorem.word }
+    description { Faker::Lorem.sentence }
   end
 end

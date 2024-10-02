@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :note do
-    title { "note one title" }
-    body { "note one body" }
+    title { Faker::Lorem.word }
+    body { Faker::Lorem.sentence }
     association :project
   end
 end
