@@ -1,6 +1,7 @@
 class Project < ApplicationRecord
   before_destroy :stop_destroy
   before_create :set_default_value
+  has_many :notes
 
   private
 

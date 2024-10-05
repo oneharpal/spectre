@@ -16,8 +16,12 @@ RSpec.describe "/notes", type: :request do
   # This should return the minimal set of attributes required to create a valid
   # Note. As you add validations to Note, be sure to
   # adjust the attributes here as well.
+  let!(:user) { create(:user) }
+  before { login_as user, scope: :user }
+
+  let(:project) { create(:project) }
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+     attributes_for(:note, project_id: project.id)
   }
 
   let(:invalid_attributes) {
