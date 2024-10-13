@@ -1,16 +1,9 @@
 class Project < ApplicationRecord
-  before_destroy :stop_destroy
+  include Immortality
   before_create :set_default_value
   has_many :notes
 
   private
-
-  def stop_destroy
-    if self.immortal?
-      errors.add(:immortal, message: "can't be destroy")
-      raise ActiveRecord::RecordNotDestroyed
-    end
-  end
 
   def set_default_value
     self.title = "Project #{calculate_sequence_number}" if title.blank?

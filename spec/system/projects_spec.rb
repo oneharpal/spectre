@@ -47,7 +47,7 @@ RSpec.describe "Projects", type: :system do
       expect(page).to have_content(project.title)
 
       click_button 'Destroy this project'
-      expect(page).to have_content("Immortal can't be destroy")
+      expect(page).to have_content("Immortal can't be destroyed")
       expect(page).to have_content(project.title)
     end
 
