@@ -45,7 +45,7 @@ group :development, :test do
   gem "factory_bot_rails", ">=6.4.3"
   gem "capybara", ">=3.40.0"
   gem "selenium-webdriver"
-  gem "shoulda-matchers", "~> 5.0"
+  gem "shoulda-matchers", "~> 6.4"
 
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false
