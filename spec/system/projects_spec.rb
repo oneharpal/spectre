@@ -42,6 +42,7 @@ RSpec.describe "Projects", type: :system do
     end
 
     it "allows deleting a project" do
+      project.update(title: 'Project title')
       visit project_path(project)
 
       expect(page).to have_content(project.title)
