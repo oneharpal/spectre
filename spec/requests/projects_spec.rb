@@ -21,7 +21,7 @@ RSpec.describe "/projects", type: :request do
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    { title: '', description: '' }
   }
 
   let!(:user) { create(:user) }
@@ -89,14 +89,15 @@ RSpec.describe "/projects", type: :request do
   describe "PATCH /update" do
     context "with valid parameters" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        { title: 'Project updated title', description: 'Project updated description' }
       }
 
       it "updates the requested project" do
         project = Project.create! valid_attributes
         patch project_url(project), params: { project: new_attributes }
         project.reload
-        skip("Add assertions for updated state")
+        expect(project.title).to eq('Project updated title')
+        expect(project.description).to eq('Project updated description')
       end
 
       it "redirects to the project" do

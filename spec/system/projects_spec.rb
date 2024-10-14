@@ -41,18 +41,7 @@ RSpec.describe "Projects", type: :system do
       expect(page).to have_content('Updated description')
     end
 
-    it "not allows deleting a immortal project" do
-      visit project_path(project)
-
-      expect(page).to have_content(project.title)
-
-      click_button 'Destroy this project'
-      expect(page).to have_content("Immortal can't be destroyed")
-      expect(page).to have_content(project.title)
-    end
-
     it "allows deleting a project" do
-      project.update(immortal: false)
       visit project_path(project)
 
       expect(page).to have_content(project.title)
@@ -60,6 +49,17 @@ RSpec.describe "Projects", type: :system do
       click_button 'Destroy this project'
       expect(page).to have_content('Project was successfully destroyed')
       expect(page).not_to have_content(project.title)
+    end
+
+    it "not allows deleting a immortal project" do
+      project.update(immortal: true)
+      visit project_path(project)
+
+      expect(page).to have_content(project.title)
+
+      click_button 'Destroy this project'
+      expect(page).to have_content("Immortal can't be destroyed")
+      expect(page).to have_content(project.title)
     end
   end
 end

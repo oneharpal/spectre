@@ -50,6 +50,7 @@ RSpec.describe "Notes", type: :system do
 
   describe "Deleting a note" do
     it "allows the user to delete a note" do
+      note.update(title: 'note title')
       visit note_path(note)
 
       expect(page).to have_content(note.title)
