@@ -16,7 +16,7 @@
   </p>
 
   <%= link_to 'Edit', edit_note_path(note), data: { turbo_frame: dom_id(note) }, class: 'btn btn-primary' %>
-  <%= link_to 'Destroy', note, data: { turbo_method: "delete", turbo_confirm: 'Are you sure?', turbo_frame: dom_id(note) } %>
+  <%= link_to 'Destroy', note, data: { turbo_method: "delete", turbo_frame: dom_id(note) } %>
 
 </div>
 <% end %>
