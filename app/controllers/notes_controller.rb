@@ -26,9 +26,18 @@ class NotesController < ApplicationController
 
     respond_to do |format|
       if @note.save
+        format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.append('notes_list', partial: 'notes/note', locals: { note: @note }),
+            turbo_stream.replace('new_note', partial: 'notes/new', locals: { note: Note.new })
+          ]
+        end
         format.html { redirect_to @note, notice: "Note was successfully created." }
         format.json { render :show, status: :created, location: @note }
       else
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.replace('new_note', partial: 'notes/new', locals: { note: @note })
+        end
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @note.errors, status: :unprocessable_entity }
       end
@@ -39,9 +48,15 @@ class NotesController < ApplicationController
   def update
     respond_to do |format|
       if @note.update(note_params)
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.replace(ActionView::RecordIdentifier.dom_id(@note), partial: "notes/note", locals: { note: @note } )
+        end
         format.html { redirect_to @note, notice: "Note was successfully updated." }
         format.json { render :show, status: :ok, location: @note }
       else
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.replace(ActionView::RecordIdentifier.dom_id(@note), partial: "notes/new", locals: { note: @note })
+        end
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @note.errors, status: :unprocessable_entity }
       end
@@ -53,6 +68,9 @@ class NotesController < ApplicationController
     @note.destroy!
 
     respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.remove(ActionView::RecordIdentifier.dom_id(@note))
+      end
       format.html { redirect_to notes_path, status: :see_other, notice: "Note was successfully destroyed." }
       format.json { head :no_content }
     end

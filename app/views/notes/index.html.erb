@@ -2,13 +2,11 @@
 
 <h1>Notes</h1>
 
-<div id="notes">
-  <% @notes.each do |note| %>
-    <%= render note %>
-    <p>
-      <%= link_to "Show this note", note %>
-    </p>
-  <% end %>
-</div>
+<%= turbo_frame_tag 'notes_list' do %>
+  <%= turbo_stream_from "notes" %>
+  <%= render @notes %>
+<% end %>
 
-<%= link_to "New note", new_note_path %>
+<%= turbo_frame_tag 'new_note' do %>
+  <%= link_to 'New note', new_note_path, data: { turbo_frame: "new_note" } %>
+<% end %>
