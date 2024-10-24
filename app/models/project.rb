@@ -1,4 +1,6 @@
 class Project < ApplicationRecord
+  has_paper_trail
+
   include Immortality
   before_create :set_default_value
   has_many :notes

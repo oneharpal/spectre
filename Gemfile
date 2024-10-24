@@ -27,6 +27,7 @@ gem "jbuilder"
 
 gem "devise", "~> 4.9"
 gem "faker"
+gem "paper_trail"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
