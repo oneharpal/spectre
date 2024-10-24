@@ -28,15 +28,15 @@ class NotesController < ApplicationController
       if @note.save
         format.turbo_stream do
           render turbo_stream: [
-            turbo_stream.append('notes_list', partial: 'notes/note', locals: { note: @note }),
-            turbo_stream.replace('new_note', partial: 'notes/new', locals: { note: Note.new })
+            turbo_stream.append("notes_list", partial: "notes/note", locals: { note: @note }),
+            turbo_stream.replace("new_note", partial: "notes/new", locals: { note: Note.new })
           ]
         end
         format.html { redirect_to @note, notice: "Note was successfully created." }
         format.json { render :show, status: :created, location: @note }
       else
         format.turbo_stream do
-          render turbo_stream: turbo_stream.replace('new_note', partial: 'notes/new', locals: { note: @note })
+          render turbo_stream: turbo_stream.replace("new_note", partial: "notes/new", locals: { note: @note })
         end
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @note.errors, status: :unprocessable_entity }
@@ -49,7 +49,7 @@ class NotesController < ApplicationController
     respond_to do |format|
       if @note.update(note_params)
         format.turbo_stream do
-          render turbo_stream: turbo_stream.replace(ActionView::RecordIdentifier.dom_id(@note), partial: "notes/note", locals: { note: @note } )
+          render turbo_stream: turbo_stream.replace(ActionView::RecordIdentifier.dom_id(@note), partial: "notes/note", locals: { note: @note })
         end
         format.html { redirect_to @note, notice: "Note was successfully updated." }
         format.json { render :show, status: :ok, location: @note }
