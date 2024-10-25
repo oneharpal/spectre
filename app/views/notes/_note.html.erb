@@ -12,7 +12,11 @@
 
   <p>
     <strong>Project:</strong>
-    <%= note.project.title %>
+    <% if @project.present? %>
+      <%= note.project.title %>
+    <% else %>
+      <%= link_to note.project.title, project_path(note.project), target: '_blank' %>
+    <% end %>
   </p>
 
   <%= link_to 'Edit', edit_note_path(note), data: { turbo_frame: dom_id(note) }, class: 'btn btn-primary' %>
