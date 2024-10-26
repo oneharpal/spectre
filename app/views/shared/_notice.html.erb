@@ -1,2 +1,8 @@
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<%= turbo_frame_tag "flash" do %>
+  <% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
+  <% if flash[:alert] %>
+    <div class="alert"><%= flash[:alert] %></div>
+  <% end %>
+<% end %>
