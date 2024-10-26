@@ -50,11 +50,16 @@ class NotesController < ApplicationController
 
   # DELETE /notes/1 or /notes/1.json
   def destroy
-    @note.destroy!
-
-    respond_to do |format|
-      format.html { redirect_to notes_path, status: :see_other, notice: "Note was successfully destroyed." }
-      format.json { head :no_content }
+    if @note.destroy
+      respond_to do |format|
+        format.html { redirect_to notes_path, status: :see_other, notice: "Note was successfully destroyed." }
+        format.json { head :no_content }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to note_path(@note), status: :unprocessable_entity, notice: @note.errors.full_messages.join(', ')}
+        format.json { render json: @note.errors, status: :unprocessable_entity }
+      end
     end
   end
 
