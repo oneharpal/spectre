@@ -7,6 +7,8 @@ class Note < ApplicationRecord
 
   before_create :set_default_value
 
+  broadcasts_to :project
+
   private
   def set_default_value
     self.immortal = true if self.immortal.nil?
