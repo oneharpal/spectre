@@ -5,3 +5,13 @@
   <%= link_to "Back", projects_path %> |
   <%= link_to "Destroy", @project, data: { turbo_method: :delete } %>
 </div>
+<hr/>
+
+<h2>Notes</h2>
+<%= turbo_stream_from @project %>
+<div id="notes">
+  <%= render @project.notes %>
+</div>
+
+<h3>New Note</h3>
+<%= turbo_frame_tag 'new_note', src: new_note_path %>
