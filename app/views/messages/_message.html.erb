@@ -1,0 +1,7 @@
+<p id="<%= dom_id(message) %>" class="message-container">
+  <span class="message-user"><%= message.user&.email %></span>
+  <span class="message-timestamp">
+    <%= message.created_at.strftime("%I:%M %p") %>
+  </span>
+  <span class="message-content"><%= message.content %></span>
+</p>
