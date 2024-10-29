@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_29_172621) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_29_190648) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,6 +18,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_29_172621) do
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "room_id", null: false
+    t.index ["room_id"], name: "index_messages_on_room_id"
   end
 
   create_table "notes", force: :cascade do |t|
@@ -69,5 +71,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_29_172621) do
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
 
+  add_foreign_key "messages", "rooms"
   add_foreign_key "notes", "projects"
 end

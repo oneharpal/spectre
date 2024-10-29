@@ -5,6 +5,14 @@
 <div>
   <%= link_to "Edit this room", edit_room_path(@room) %> |
   <%= link_to "Back to rooms", rooms_path %>
-
   <%= button_to "Destroy this room", @room, method: :delete %>
 </div>
+
+<%= turbo_stream_from @room  %>
+
+<%= turbo_frame_tag 'messages' do %>
+  <div class='messages'>
+    <%= render @room.messages %>
+  </div>
+<% end %>
+<%= render 'messages/form', message: @room.messages.new, room: @room %>
