@@ -1,3 +1,4 @@
+<% content_for :title, @project.title %>
 <%= render @project %>
 
 <div>
@@ -10,8 +11,10 @@
 <h2>Notes</h2>
 <%= turbo_stream_from @project %>
 <div id="notes">
-  <%= render @project.notes %>
+  <%= render @project.notes.by_rank %>
 </div>
 
-<h3>New Note</h3>
-<%= turbo_frame_tag 'new_note', src: new_note_path %>
+<div>
+  <h3>New Note</h3>
+  <%= render 'projects/new_note', note: @project.notes.new %>
+</div>

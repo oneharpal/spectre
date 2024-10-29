@@ -14,6 +14,7 @@ class NotesController < ApplicationController
   # GET /notes/new
   def new
     @note = Note.new
+    @note.project_id = params[:project_id] if params[:project_id]
   end
 
   # GET /notes/1/edit
@@ -70,6 +71,6 @@ class NotesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def note_params
-      params.require(:note).permit(:title, :body, :project_id)
+      params.require(:note).permit(:title, :body, :project_id, :status, :rank)
     end
 end

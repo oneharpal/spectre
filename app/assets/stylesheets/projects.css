@@ -1,0 +1,8 @@
+.project_new_note{
+  display: block;
+}
+
+.project_new_note span {
+  display: inline-block;
+  margin-bottom: 10px;
+}

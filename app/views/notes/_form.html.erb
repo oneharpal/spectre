@@ -27,6 +27,16 @@
   </div>
 
   <div>
+    <%= form.label :rank, style: "display: block" %>
+    <%= form.number_field :rank %>
+  </div>
+
+  <div>
+    <%= form.label :status, style: "display: block" %>
+    <%= form.select :status, options_for_select(Note.statuses.keys.map { |status| [status.humanize, status] }, note.status) %>
+  </div>
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>
