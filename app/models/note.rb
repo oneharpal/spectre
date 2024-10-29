@@ -1,7 +1,7 @@
 class Note < ApplicationRecord
   include Immortality
   has_paper_trail
-  enum status: ["draft", "in_progress", "review", "completed", "archived", "published", "canceled", "important"]
+  enum status: [ "draft", "in_progress", "review", "completed", "archived", "published", "canceled", "important" ]
 
   belongs_to :project
   delegate :title, to: :project, allow_nil: true, prefix: true

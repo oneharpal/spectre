@@ -1,3 +1,4 @@
+<% content_for :title, @project.title %>
 <%= render @project %>
 
 <div>
@@ -13,5 +14,7 @@
   <%= render @project.notes.by_rank %>
 </div>
 
-<h3>New Note</h3>
-<%= turbo_frame_tag 'new_note', src: new_note_path(project_id: @project.id) %>
+<div>
+  <h3>New Note</h3>
+  <%= render 'projects/new_note', note: @project.notes.new %>
+</div>
