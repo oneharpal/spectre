@@ -9,6 +9,8 @@ class Note < ApplicationRecord
 
   after_initialize :set_default_values, if: :new_record?
 
+  scope :by_rank, -> { order(rank: :asc) }
+
   broadcasts_to :project
 
   private

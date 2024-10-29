@@ -10,8 +10,8 @@
 <h2>Notes</h2>
 <%= turbo_stream_from @project %>
 <div id="notes">
-  <%= render @project.notes %>
+  <%= render @project.notes.by_rank %>
 </div>
 
 <h3>New Note</h3>
-<%= turbo_frame_tag 'new_note', src: new_note_path %>
+<%= turbo_frame_tag 'new_note', src: new_note_path(project_id: @project.id) %>
