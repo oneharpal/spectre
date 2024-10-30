@@ -18,10 +18,11 @@ class Note < ApplicationRecord
   def set_default_values
     self.immortal ||= true
     self.status ||= "draft"
-    self.rank ||= 0
+    self.rank ||= project.notes.maximum(:rank) + 1
   end
 
   def check_rank
+    return if new_record?
     return if !rank_changed?
     return if self.rank.nil? || self.rank == 0
     return unless n = self.project.notes.find_by(rank: self.rank)
