@@ -18,7 +18,7 @@ class Note < ApplicationRecord
   def set_default_values
     self.immortal ||= true
     self.status ||= "draft"
-    self.rank ||= project.notes.maximum(:rank) + 1
+    self.rank ||= project.notes.maximum(:rank) + 1 rescue 0
   end
 
   def check_rank
