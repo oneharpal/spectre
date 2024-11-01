@@ -1,3 +1,12 @@
-<%= render "/shared/auth_links" %>
-<%= render "shared/nav" %>
-<%= render 'shared/notice' %>
+<header class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+  <div class="container">
+    <!-- Brand or Logo (optional) -->
+    <a class="navbar-brand" href="#">Spectre</a>
+    
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse justify-content-end">
+      <!-- Authentication Links -->
+      <%= render "/shared/auth_links" %>
+    </div>    
+  </div>
+</header>

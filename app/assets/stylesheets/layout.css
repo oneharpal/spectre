@@ -1,0 +1,11 @@
+.body_container.row {
+  margin: 0px;
+}
+
+.body_container {
+  min-height: 82vh;
+}
+
+.footer {
+  flex: 1;
+}
