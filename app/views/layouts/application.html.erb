@@ -23,10 +23,13 @@
   <body>
     <div class="main_body_container">
       <div class='header'><%= render 'shared/header' %></div>
-      <%= render 'shared/notice' %>
+      
       <div class="body_container row">
         <div class="left_section col-md-3"><%= render 'shared/left_section' %></div>
-        <div class="body col-md-6"><%= yield %></div>
+        <div class="body col-md-6">
+          <%= render 'shared/notice' %>
+          <%= yield %>          
+        </div>
         <div class="right_section col-md-3"><%= render 'shared/right_section' %></div>
       </div>
       <div class="footer"><%= render 'shared/footer' %></div>

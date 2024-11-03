@@ -57,7 +57,7 @@ class NotesController < ApplicationController
         format.html { redirect_to notes_path, status: :see_other, notice: "Note was successfully destroyed." }
         format.json { head :no_content }
       else
-        format.html { redirect_to note_path(@note), notice: @note.errors.full_messages.join(", ") }
+        format.html { redirect_to note_path(@note), alert: @note.errors.full_messages.join(", ") }
         format.json { render json: @note.errors, status: :unprocessable_entity }
       end
     end
