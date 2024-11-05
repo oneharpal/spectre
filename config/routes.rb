@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   resources :rooms do
     resources :messages, only: :create
   end
+
+  resources :messages
   devise_for :users
   resources :notes
   resources :projects
