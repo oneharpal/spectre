@@ -1,0 +1,16 @@
+<footer class="footer mt-auto py-3 bg-light">
+  <div class="container text-center">
+    <p class="mb-1">&copy; <%= Time.current.year %> <%= Rails.application.class.module_parent_name %></p>
+    <ul class="list-inline">
+      <li class="list-inline-item">
+        <%= link_to 'Privacy Policy', '#', class: 'text-decoration-none text-secondary' %>
+      </li>
+      <li class="list-inline-item">
+        <%= link_to 'Terms of Service', '#', class: 'text-decoration-none text-secondary' %>
+      </li>
+      <li class="list-inline-item">
+        <%= link_to 'Contact', '#', class: 'text-decoration-none text-secondary' %>
+      </li>
+    </ul>
+  </div>
+</footer>

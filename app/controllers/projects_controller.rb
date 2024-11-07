@@ -55,7 +55,7 @@ class ProjectsController < ApplicationController
         format.html { redirect_to projects_path, status: :see_other, notice: "Project was successfully destroyed." }
         format.json { head :no_content }
       else
-        format.html { redirect_to @project, notice: @project.errors.full_messages.join(", ") }
+        format.html { redirect_to @project, alert: @project.errors.full_messages.join(", ") }
         format.json { render json: @project.errors, status: :unprocessable_entity }
       end
     end
