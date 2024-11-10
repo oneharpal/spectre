@@ -1,12 +1,9 @@
 <div id="<%= dom_id comment %>">
-  <p>
-    <strong>Content:</strong>
+  <div>
     <%= comment.content %>
-  </p>
-
-  <p>
-    <strong>Commentable:</strong>
-    <%= comment.commentable_id %>
-  </p>
-
+  </div>
+  <div>
+    <%= link_to "Show", comment %>
+  </div>
 </div>
+<br/>

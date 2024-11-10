@@ -1,0 +1,11 @@
+<hr/>
+<h2>Comments</h2>
+<div id="comments">
+  <%= render @note.comments %>
+</div>
+
+<%= turbo_frame_tag 'new_comment' do %>
+  <div>
+    <%= render 'comments/form', comment: @note.comments.new %>
+  </div>
+<% end %>

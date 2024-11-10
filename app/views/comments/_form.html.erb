@@ -16,10 +16,8 @@
     <%= form.text_area :content %>
   </div>
 
-  <div>
-    <%= form.label :commentable_id, style: "display: block" %>
-    <%= form.text_field :commentable_id %>
-  </div>
+  <%= form.hidden_field :commentable_id %>
+  <%= form.hidden_field :commentable_type %>
 
   <div>
     <%= form.submit %>
