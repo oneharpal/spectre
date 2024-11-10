@@ -12,7 +12,6 @@ RSpec.describe "comments/new", type: :view do
     render
 
     assert_select "form[action=?][method=?]", comments_path, "post" do
-
       assert_select "textarea[name=?]", "comment[content]"
 
       assert_select "input[name=?]", "comment[commentable_id]"
