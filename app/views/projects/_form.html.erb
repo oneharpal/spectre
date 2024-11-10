@@ -12,6 +12,11 @@
   <% end %>
 
   <div>
+    <%= form.label :parent_project, style: "display: block" %>
+    <%= form.select :parent_project, options_from_collection_for_select(project.parent_candidates, :id, :title) %>
+  </div>
+
+  <div>
     <%= form.label :title, style: "display: block" %>
     <%= form.text_field :title %>
   </div>
