@@ -6,3 +6,5 @@
 
   <%= button_to "Destroy this note", @note, method: :delete %>
 </div>
+<%= turbo_stream_from @note %>
+<%= render 'comments' %>

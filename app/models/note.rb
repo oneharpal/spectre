@@ -4,6 +4,7 @@ class Note < ApplicationRecord
   enum status: [ "draft", "in_progress", "review", "completed", "archived", "published", "canceled", "important" ]
 
   belongs_to :project
+  has_many :comments, as: :commentable
   delegate :title, to: :project, allow_nil: true, prefix: true
   validates :title, presence: true
 

@@ -1,0 +1,8 @@
+<p style="color: green"><%= notice %></p>
+<%= render 'shared/raw_elements', obj: @comment %>
+
+<div>
+  <%= link_to "Edit this comment", edit_comment_path(@comment) %> |
+  <%= link_to @comment.commentable.title, @comment.commentable %>
+  <%= button_to "Destroy this comment", @comment, method: :delete %>
+</div>

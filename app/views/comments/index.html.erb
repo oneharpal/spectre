@@ -1,0 +1,11 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Comments" %>
+
+<h1>Comments</h1>
+
+<div id="comments">
+  <%= render @comments %>
+</div>
+
+<%= link_to "New comment", new_comment_path %>
