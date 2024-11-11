@@ -4,13 +4,13 @@ class Project < ApplicationRecord
   include Immortality
   before_create :set_default_value
   has_many :notes
-  belongs_to :parent_project, class_name: 'Project', optional: true
-  has_many :sub_projects, class_name: 'Project', foreign_key: 'parent_project_id'
+  belongs_to :parent_project, class_name: "Project", optional: true
+  has_many :sub_projects, class_name: "Project", foreign_key: "parent_project_id"
 
   validates :title, presence: true
 
   def parent_candidates
-    self.class.where.not(id: [id] + all_descendants.map(&:id))
+    self.class.where.not(id: [ id ] + all_descendants.map(&:id))
   end
 
   def all_descendants
