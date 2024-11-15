@@ -2,12 +2,22 @@
 <%= render 'shared/raw_elements', obj: @project %>
 
 <div>
+  <%= link_to "Notes", notes_project_path(@project) %> |
   <%= link_to "Edit", edit_project_path(@project) %> |
   <%= link_to "Back", projects_path %> |
   <%= link_to "Destroy", @project, data: { turbo_method: :delete } %>
 </div>
 <hr/>
 
-<div id="sub-projects">
-  <%= render @project.sub_projects %>
-</div>
+<% if @project.sub_projects.any? %>
+  <div id="sub-projects">
+    <h3>Sub projects</h3>
+    <% @project.sub_projects.each do |project| %>
+      <%= render project %>
+      <p>
+        <%= link_to "Show this project", project %>
+      </p>
+      <hr/>
+    <% end %>
+  </div>
+<% end %>
