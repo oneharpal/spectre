@@ -1,20 +1,23 @@
 <% content_for :title, @project.title %>
-<%= render @project %>
+<%= render 'shared/raw_elements', obj: @project %>
 
 <div>
+  <%= link_to "Notes", notes_project_path(@project) %> |
   <%= link_to "Edit", edit_project_path(@project) %> |
   <%= link_to "Back", projects_path %> |
   <%= link_to "Destroy", @project, data: { turbo_method: :delete } %>
 </div>
 <hr/>
 
-<h2>Notes</h2>
-<%= turbo_stream_from @project %>
-<div id="notes">
-  <%= render @project.notes.by_rank %>
-</div>
-
-<div>
-  <h3>New Note</h3>
-  <%= render 'projects/new_note', note: @project.notes.new %>
-</div>
+<% if @project.sub_projects.any? %>
+  <div id="sub-projects">
+    <h3>Sub projects</h3>
+    <% @project.sub_projects.each do |project| %>
+      <%= render project %>
+      <p>
+        <%= link_to "Show this project", project %>
+      </p>
+      <hr/>
+    <% end %>
+  </div>
+<% end %>

@@ -13,7 +13,7 @@
 
   <div>
     <%= form.label :parent_project, style: "display: block" %>
-    <%= form.select :parent_project, options_from_collection_for_select(project.parent_candidates, :id, :title) %>
+    <%= form.select :parent_project_id, options_from_collection_for_select(project.parent_candidates, :id, :title), include_blank: "Select parent project" %>
   </div>
 
   <div>
