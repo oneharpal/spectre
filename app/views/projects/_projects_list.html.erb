@@ -1,0 +1,12 @@
+<% if projects.any? %>
+	<div id="projects_list">
+		<h3>Sub Projects</h3>
+	  <% projects.each do |project| %>
+	    <%= render project %>
+	    <p>
+	      <%= link_to "Show this project", project %>
+	    </p>
+	    <hr/>
+	  <% end %>
+	</div>
+<% end %>

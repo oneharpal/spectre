@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: %i[ show edit update destroy notes]
+  before_action :set_project, only: %i[ show edit update destroy sub_projects]
   before_action :authenticate_user!
 
   # GET /projects or /projects.json
@@ -36,8 +36,7 @@ class ProjectsController < ApplicationController
   end
 
   # notes_project
-  def notes
-    @notes = @project.notes
+  def sub_projects
   end
 
   # PATCH/PUT /projects/1 or /projects/1.json

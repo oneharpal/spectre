@@ -1,0 +1,4 @@
+<% if project.sub_projects.any? %>
+	<%= link_to "#{project.sub_projects.count} Sub Projects", sub_projects_project_path(project) %>
+<% end %>
+

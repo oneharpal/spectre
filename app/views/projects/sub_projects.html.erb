@@ -1,0 +1,7 @@
+<% content_for :title, @project.title %>
+<%= render @project %>
+
+<%= link_to "show", project_path(@project) %>
+<hr/>
+
+<%= render 'projects_list', projects: @project.sub_projects %>
