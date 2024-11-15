@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   resources :messages
   devise_for :users
   resources :notes
-  resources :projects
+  resources :projects do
+    member do
+      get "notes"
+    end
+  end
   get "home/index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

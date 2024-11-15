@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: %i[ show edit update destroy ]
+  before_action :set_project, only: %i[ show edit update destroy notes]
   before_action :authenticate_user!
 
   # GET /projects or /projects.json
@@ -33,6 +33,11 @@ class ProjectsController < ApplicationController
         format.json { render json: @project.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  # notes_project
+  def notes
+    @notes = @project.notes
   end
 
   # PATCH/PUT /projects/1 or /projects/1.json

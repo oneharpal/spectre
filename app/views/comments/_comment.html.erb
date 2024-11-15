@@ -1,6 +1,6 @@
 <div id="<%= dom_id comment %>">
   <div>
-    <%= comment.content %>
+    <%= simple_format(comment.content) %>
   </div>
   <div>
     <%= link_to "Show", comment %>
