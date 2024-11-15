@@ -14,3 +14,7 @@
 <div id="notes">
   <%= render @project.notes.by_rank %>
 </div>
+<div>
+  <h3>New Note</h3>
+  <%= render 'projects/new_note', note: @project.notes.new %>
+</div>
