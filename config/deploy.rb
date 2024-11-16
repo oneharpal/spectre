@@ -25,7 +25,7 @@ set :deploy_to, "/var/www/spectre"
 append :linked_files, "config/database.yml", "config/master.key"
 
 # Default value for linked_dirs is []
-append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system", "vendor", "vendor/javascript", "storage"
+append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system", "vendor", "storage"
 
 
 # Set the Ruby version (example for rbenv)
