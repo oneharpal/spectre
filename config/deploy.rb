@@ -53,6 +53,7 @@ set :puma_pid, "#{shared_path}/tmp/pids/puma.pid"
 set :puma_access_log, "#{release_path}/log/puma.access.log"
 set :puma_error_log, "#{release_path}/log/puma.error.log"
 set :puma_restart_command, "bundle exec puma -C config/puma.rb"
+set :bundle_bins, fetch(:bundle_bins, []).push('rake')
 
 # Run migrations automatically after deploy
 after "deploy:updated", "deploy:migrate"
