@@ -6,7 +6,7 @@ set :repo_url, "git@github.com:oneharpal/spectre.git"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
-set :branch, 'deploy'
+set :branch, "deploy"
 
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, "/var/www/spectre"
@@ -22,14 +22,14 @@ set :deploy_to, "/var/www/spectre"
 # set :pty, true
 
 # Default value for :linked_files is []
-append :linked_files, "config/database.yml", 'config/master.key'
+append :linked_files, "config/database.yml", "config/master.key"
 
 # Default value for linked_dirs is []
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system", "vendor", "storage"
 
 
 # Set the Ruby version (example for rbenv)
-set :rbenv_ruby, '3.3.5'
+set :rbenv_ruby, "3.3.5"
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
@@ -45,12 +45,12 @@ set :keep_releases, 5
 # Puma settings
 
 set :ssh_options, {
-  keys: %w(~/.ssh/id_rsa),
+  keys: %w[~/.ssh/id_rsa],
   forward_agent: true,
-  auth_methods: ["publickey"]
+  auth_methods: [ "publickey" ]
 }
 
-set :puma_threads, [4, 16]
+set :puma_threads, [ 4, 16 ]
 set :puma_workers, 2
 set :puma_preload_app, true
 set :puma_bind, "unix://#{shared_path}/tmp/sockets/puma.sock"
@@ -59,3 +59,6 @@ set :puma_pid, "#{shared_path}/tmp/pids/puma.pid"
 set :puma_access_log, "#{release_path}/log/puma.access.log"
 set :puma_error_log, "#{release_path}/log/puma.error.log"
 set :puma_restart_command, "bundle exec puma -C config/puma.rb"
+
+# Run migrations automatically after deploy
+after "deploy:updated", "deploy:migrate"
