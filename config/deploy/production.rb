@@ -61,18 +61,18 @@
 #   }
 
 set :stage, :production
-set :rails_env, 'production'
-set :branch, 'deploy'
+set :rails_env, "production"
+set :branch, "deploy"
 
 # Server details
-server '192.168.1.4', user: 'deploy', roles: %w[web app db], primary: true
+server "192.168.1.4", user: "deploy", roles: %w[web app db], primary: true
 
 # The location to deploy to
-set :deploy_to, '/var/www/spectre'
+set :deploy_to, "/var/www/spectre"
 
 # Set SSH options (same as deploy.rb)
 set :ssh_options, {
   keys: %w[~/.ssh/id_rsa],
   forward_agent: true,
-  auth_methods: ['publickey']
+  auth_methods: [ "publickey" ]
 }

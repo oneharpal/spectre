@@ -25,7 +25,7 @@ set :deploy_to, "/var/www/spectre"
 append :linked_files, "config/database.yml", "config/master.key"
 
 # Default value for linked_dirs is []
-append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system", "vendor", "storage"
+append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system", "vendor", "vendor/javascript", "storage"
 
 
 # Set the Ruby version (example for rbenv)
@@ -53,7 +53,7 @@ set :puma_pid, "#{shared_path}/tmp/pids/puma.pid"
 set :puma_access_log, "#{release_path}/log/puma.access.log"
 set :puma_error_log, "#{release_path}/log/puma.error.log"
 set :puma_restart_command, "bundle exec puma -C config/puma.rb"
-set :bundle_bins, fetch(:bundle_bins, []).push('rake')
+set :bundle_bins, fetch(:bundle_bins, []).push("rake")
 
 # Run migrations automatically after deploy
 after "deploy:updated", "deploy:migrate"
