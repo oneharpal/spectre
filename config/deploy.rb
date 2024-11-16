@@ -45,9 +45,10 @@ set :keep_releases, 5
 # Puma settings
 
 set :ssh_options, {
-  keys: %w[~/.ssh/id_rsa],
+  user: 'deploy',
+  keys: %w(/home/archer/.ssh/id_ed25519),
   forward_agent: true,
-  auth_methods: [ "publickey" ]
+  auth_methods: %w(publickey)
 }
 
 set :puma_threads, [ 4, 16 ]
