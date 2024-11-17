@@ -57,4 +57,14 @@ set :bundle_bins, fetch(:bundle_bins, []).push("rake")
 
 # Run migrations automatically after deploy
 after "deploy:updated", "deploy:migrate"
-after "deploy:published", "puma:restart"
+
+# After deployment tasks
+namespace :deploy do
+  task :restart_puma do
+    on roles(:app) do
+      execute :sudo, 'systemctl', 'restart', 'puma'
+    end
+  end
+
+  after :published, :restart_puma
+end
