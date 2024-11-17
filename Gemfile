@@ -63,3 +63,10 @@ end
 group :test do
   gem "database_cleaner", ">=2.0.2"
 end
+
+group :development, :production do
+  gem "capistrano", "~> 3.17"
+  gem "capistrano-rails", "~> 1.6"
+  gem "capistrano-puma", "~> 0.2.3"
+  gem "capistrano-rbenv", "~> 2.2"
+end
