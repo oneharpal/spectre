@@ -62,7 +62,7 @@ after "deploy:updated", "deploy:migrate"
 namespace :deploy do
   task :restart_puma do
     on roles(:app) do
-      execute :sudo, 'systemctl', 'restart', 'puma'
+      execute :sudo, "systemctl", "restart", "puma"
     end
   end
 
