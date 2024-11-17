@@ -62,6 +62,9 @@
 
 set :stage, :production
 set :rails_env, "production"
+set :default_env, {
+  "DATABASE_URL" => "postgres://deploy:deploy@localhost:5432/spectre_production"
+}
 set :branch, "deploy"
 
 # Server details
