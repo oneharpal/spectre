@@ -20,6 +20,7 @@ class Note < ApplicationRecord
     self.immortal ||= true
     self.status ||= "draft"
     self.rank ||= project.notes.maximum(:rank) + 1 rescue 0
+    self.body = title if body.blank?
   end
 
   def check_rank
